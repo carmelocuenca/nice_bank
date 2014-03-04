@@ -17,5 +17,6 @@ Then /^(#{CAPTURE_CASH_AMOUNT_NUMBER}) should be dispensed$/ do |amount|
 end
 
 Then /^the balance of my account should be (#{CAPTURE_CASH_AMOUNT_NUMBER})$/ do |amount|
-  my_account.balance.should eq(amount), "Expected the balance to be #{amount} but it was #{my_account.balance}"
+  eventually { my_account.balance.should eq(amount),
+                                         "Expected the balance to be #{amount} but it was #{my_account.balance}" }
 end
